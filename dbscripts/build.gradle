@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.9.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-//	apply plugin: 'com.palantir.docker'
+	apply plugin: 'com.palantir.docker'
 
 }
 
@@ -28,5 +28,25 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
 	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
-//	classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
+	//	Added for docker
+	classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
 }
+
+bootJar{
+	mainClassName="com.vinsan.demo.DbDDLLoader"
+	arhiveName 'DbDDLLoader.jar'
+
+}
+docker {
+	name 'com.vinsan.k8s/db-ddl-load'
+	buildArgs([JAR_FILE: "${jar.arhiveName}"])
+	noCache true
+}
+
+dockerRun {
+	name 'db-ddl-load-service'
+	image 'com.vinsan.k8s/db-ddl-load'
+	port '10080:8080'
+	daemonize true
+}
+
