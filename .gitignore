@@ -1,0 +1,5 @@
+application/bin/main/com/vinsan/demo/DemoApplication.class
+dbscripts/bin/main/com/vinsan/demo/DbDDLLoader.class
+application/bin/main/application.properties
+application/bin/test/com/vinsan/demo/DemoApplicationTests.class
+dbscripts/bin/main/application.properties

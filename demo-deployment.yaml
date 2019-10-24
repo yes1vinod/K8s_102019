@@ -1,0 +1,20 @@
+kind: Deployment
+metadata:
+ name: db-deployment
+ labels:
+   app: db
+spec:
+ replicas: 3
+ selector:
+   matchLabels:
+     app: db
+ template:
+   metadata:
+     labels:
+       app: db
+   spec:
+     containers:
+     - name: db
+       image: gcr.io/recruit-pro/db-loader
+       ports:
+       - containerPort: 80
