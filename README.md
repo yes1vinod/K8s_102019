@@ -1,4 +1,5 @@
 # K8s_102019
+# https://github.com/cncf/presentations/tree/master/kubernetes
 This project is going is to demonstrate the an application that will be deployed on k8s cluster
     1  pwd
     2  ls -ltr
