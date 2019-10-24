@@ -19,14 +19,14 @@ This project is going is to demonstrate the an application that will be deployed
    16  docker push db-loader
    17  docker tag db-loader gcr.io/recruit-pro/db-loader:latest
    18  docker images
-   19  docker push gcr.io/recruit-pro/db-loader
+# docker push gcr.io/<ProjectID>/db-loader
    20  docker push db-loader
    21  history
    22  ls -ltr
    23  cd k8s-demo/
    24  ls -ltr
    25  vi db-app.yaml
-   26  gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project recruit-pro
+   # gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project <ProjectName>
    27  kubectl
    28  kubectl apply -f ./db-app.yaml --validate
    29  kubectl get pods
